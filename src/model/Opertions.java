@@ -2,7 +2,7 @@ package model;
 
 import java.util.Scanner;
 
-public class Operations{
+public class Opertions{
 	
 	public static int size(){
 		Scanner in = new Scanner(System.in);
@@ -10,11 +10,12 @@ public class Operations{
 		int size = in.nextInt();
 		int pepe = 1;
 		int Pion = 4;
+		
 		return size;
 	}
 	
 	public static void materialList(String[] productsName, float[] productsQuantity, int[] productUse){		
-	
+		Scanner in  = new Scanner(System.in);
 		for(int i = 0; i < productsName.length; i++){
 			System.out.print("Nombre del producto: ");
 			productsName[i] = in.nextLine();
@@ -29,33 +30,33 @@ public class Operations{
 		}
 	}
 	
-	public static void(float[] productsHomecenter,float[] productsDistrict ,float[] productsCenter ,String[] productsName){
+	public static void productsPrice(float[] Homecenter,float[] District ,float[] Center ,String[] productsName){
 		Scanner in= new Scanner(System.in);
 		
 		System.out.println("HOMECENTER");
 		System.out.println("");
-		for(int i = 0; i < productsPrice.length; i++){
+		for(int i = 0; i < Homecenter.length; i++){
 			
 			System.out.print("Precio de " + productsName[i] + ": ");
-			productsHomecenter[i] = in.nextFloat;
+			Homecenter[i] = in.nextFloat();
 			System.out.println("");
 		}
 		
 		System.out.println("FERRETERIA DEL BARRIO");
 		System.out.println("");
-		for(int i = 0; i < productsPrice.length; i++){
+		for(int i = 0; i < District.length; i++){
 			
 			System.out.print("Precio de " + productsName[i] + ": ");
-			productsDistrict[i] = in.nextFloat;
+			District[i] = in.nextFloat();
 			System.out.println("");
 		}
 		
 		System.out.println("FERRETERIA DEL CENTRO");
 		System.out.println("");
-		for(int i = 0; i < productsPrice.length; i++){
+		for(int i = 0; i < Center.length; i++){
 			
 			System.out.print("Precio de " + productsName[i] + ": ");
-			productsDistrict[i] = in.nextFloat;
+			Center[i] = in.nextFloat();
 			System.out.println("");
 		}
 	}
