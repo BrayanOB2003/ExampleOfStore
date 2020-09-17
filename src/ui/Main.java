@@ -12,7 +12,7 @@ public class Main{
 		return size;
 	}
 	
-	public static void materialList(String[] productsName, float[] productsQuantity, int[] productUse){		
+	public static void materialList(String[] productsName, float[] productsQuantity, int[] productsUse){		
 		Scanner in  = new Scanner(System.in);
 		Scanner sc = new Scanner(System.in);
 		for(int i = 0; i < productsName.length; i++){
@@ -23,7 +23,7 @@ public class Main{
 			productsQuantity[i] = sc.nextFloat();
 			
 			System.out.println("Utilizacion del producto \n" + "1.Obra negra\n" + "2.Obra blanca\n" + "3.Pintura");
-			productUse[i] = sc.nextInt();
+			productsUse[i] = sc.nextInt();
 		}
 	}
 	
@@ -89,11 +89,43 @@ public class Main{
 		
 	}
 	
-	
-	
-	
-	
-	
+	public static void printProducts(String[] productsName, int[] productsUse){
+		
+		Scanner sc = new Scanner(System.in);
+		int option = 0;
+		
+		while(option < 4){
+			System.out.println("Productos por utilizacion \n" + "1.Obra negra\n" + "2.Obra blanca\n" + "3.Pintura\n" + "4.Terminar");
+			option = sc.nextInt();
+		
+			if(option == 1){
+				System.out.println("Materiales usados en obra negra");
+				for(int i = 0; i < productsUse.length; i++){
+					if(productsUse[i] == 1){
+						System.out.println(productsName[i]);
+					}
+				}
+			} else if(option == 2){	
+				System.out.println("");
+				System.out.println("Materiales usados en obra blanca");
+				for(int i = 0; i < productsUse.length; i++){
+					if(productsUse[i] == 2){
+						System.out.println(productsName[i]);
+					}
+				}
+			} else if(option == 3){	
+				System.out.println("");
+				System.out.println("Materiales usado en pintura");
+				for(int i = 0; i < productsUse.length; i++){
+					if(productsUse[i] == 3){
+						System.out.println(productsName[i]);
+					}
+				}
+			} else if(option != 4){
+				option = 0;
+			}
+		}
+	}
 	
 	
 	public static void main(String[] args){
@@ -101,7 +133,7 @@ public class Main{
 		
 		String[] productsName = new String[size];
 		float[] productsQuantity = new float[size];
-		int[] productUse = new int[size];
+		int[] productsUse = new int[size];
 		float[] homecenter = new float[size];
 		float[] center = new float[size];
 		float[] district = new float[size];
@@ -109,11 +141,12 @@ public class Main{
 		float[] betterBuy = new float[size];
 		String[] place = new String[size];
 		
-		materialList(productsName,productsQuantity,productUse);
+		materialList(productsName,productsQuantity,productsUse);
 		productsPrice(homecenter, district, center, productsName);
 		Operations.totalPrice(productsName, productsQuantity, homecenter, district, center, totalPrice);
 		printTotalPrice(totalPrice);
 		Operations.betterBuy(homecenter, district, center, productsQuantity, betterBuy, place);
 		printBetterBuy(betterBuy, place, productsName);
+		printProducts(productsName,productsUse);
 	}
 }

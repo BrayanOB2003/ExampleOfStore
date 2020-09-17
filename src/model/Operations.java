@@ -41,27 +41,42 @@ public class Operations{
 					
 					place[i] = "Homecenter";
 					betterBuy[i] = totalHomecenter[i];
+				} else{
+					place[i] = "Ferreteria del centro";
+					betterBuy[i] = totalCenter[i];
 				}
 				
 			}else if(totalDistrict[i] < totalCenter[i]){
 				
-				if(totalDistrict[i] < totalCenter[i]){
-					
-					place[i] = "Ferreteria del barrio";
-					betterBuy[i] = totalDistrict[i];
-				}
+				place[i] = "Ferreteria del barrio";
+				betterBuy[i] = totalDistrict[i];
 				
-			} else {
+			}else if(totalCenter[i] < totalDistrict[i]){
 				
 				place[i] = "Ferreteria del centro";
 				betterBuy[i] = totalCenter[i];
 				
+			}else if(totalHomecenter[i] == totalCenter[i] && totalHomecenter[i] == totalDistrict[i] && totalDistrict[i] == totalCenter[i]){
+				
+				place[i] = "Homecenter, ferreteria del barrio y ferreteria del centro";
+				betterBuy[i] = totalCenter[i];
+				
+			} else if(totalHomecenter[i] == totalCenter[i]){
+				
+				place[i] = "Homecenter y Ferreteria de centro";
+				betterBuy[i] = totalCenter[i];
+				
+			} else if(totalDistrict[i] == totalCenter[i]){
+				
+				place[i] = "Ferreteria del barrio y Ferreteria de centro";
+				betterBuy[i] = totalCenter[i];
+				
+			} else if(totalHomecenter[i] == totalDistrict[i]){
+				
+				place[i] = "Homecenter y ferreteria del barrio";
+				betterBuy[i] = totalDistrict[i];
 			}
 		}
 		
 	}
-	
-	
-	
-	
 }
