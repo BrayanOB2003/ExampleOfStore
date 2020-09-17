@@ -8,6 +8,7 @@ public class Main{
 		Scanner in = new Scanner(System.in);
 		System.out.print("Numero de productos que quiere comprar: ");
 		int size = in.nextInt();
+		System.out.println("");
 		
 		return size;
 	}
@@ -21,17 +22,22 @@ public class Main{
 			
 			System.out.print("Cantidad del producto: ");
 			productsQuantity[i] = sc.nextFloat();
-			
+			System.out.println("________________________");
 			System.out.println("Utilizacion del producto \n" + "1.Obra negra\n" + "2.Obra blanca\n" + "3.Pintura");
 			productsUse[i] = sc.nextInt();
+			System.out.println("");
 		}
 	}
 	
 	public static void productsPrice(float[] Homecenter,float[] District ,float[] Center ,String[] productsName){
 		Scanner in= new Scanner(System.in);
-		System.out.println("Digite el precio de cada prducto en los establecimientos");
+		System.out.println("***********************************************************");
+		System.out.println("*Digite el precio de cada producto en los establecimientos*");
+		System.out.println("***********************************************************");
 		System.out.println("");
-		System.out.println("HOMECENTER");
+		System.out.println("|-----------|");
+		System.out.println("|HOMECENTER |");
+		System.out.println("|-----------|");
 		System.out.println("");
 		for(int i = 0; i < Homecenter.length; i++){
 			
@@ -39,8 +45,9 @@ public class Main{
 			Homecenter[i] = in.nextFloat();
 			System.out.println("");
 		}
-		
-		System.out.println("FERRETERIA DEL BARRIO");
+		System.out.println("|---------------------|");
+		System.out.println("|FERRETERIA DEL BARRIO|");
+		System.out.println("|---------------------|");
 		System.out.println("");
 		for(int i = 0; i < District.length; i++){
 			
@@ -48,8 +55,9 @@ public class Main{
 			District[i] = in.nextFloat();
 			System.out.println("");
 		}
-		
-		System.out.println("FERRETERIA DEL CENTRO");
+		System.out.println("|---------------------|");
+		System.out.println("|FERRETERIA DEL CENTRO|");
+		System.out.println("|---------------------|");
 		System.out.println("");
 		for(int i = 0; i < Center.length; i++){
 			
@@ -70,8 +78,10 @@ public class Main{
 	public static void printBetterBuy(float[] betterBuy, String[] place, String[] productsName){
 		
 		float totalPrice = 0;
-		
-		System.out.println("Mejores precios");
+		System.out.println("");
+		System.out.println("*****************");
+		System.out.println("*Mejores precios*");
+		System.out.println("*****************");
 		System.out.println("");
 		for(int i = 0; i < productsName.length; i++){
 			
@@ -93,11 +103,16 @@ public class Main{
 		
 		Scanner sc = new Scanner(System.in);
 		int option = 0;
-		
+		System.out.println("");
+		System.out.println("***************************");
+		System.out.println("*Productos por utilizacion*");
+		System.out.println("***************************");
+	
 		while(option < 4){
-			System.out.println("Productos por utilizacion \n" + "1.Obra negra\n" + "2.Obra blanca\n" + "3.Pintura\n" + "4.Terminar");
+			System.out.println("1.Obra negra\n" + "2.Obra blanca\n" + "3.Pintura\n" + "4.Terminar");
 			option = sc.nextInt();
-		
+			System.out.println("");
+			
 			if(option == 1){
 				System.out.println("Materiales usados en obra negra");
 				for(int i = 0; i < productsUse.length; i++){
@@ -124,6 +139,7 @@ public class Main{
 			} else if(option != 4){
 				option = 0;
 			}
+			System.out.println("");
 		}
 	}
 	
