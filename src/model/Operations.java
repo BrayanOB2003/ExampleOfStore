@@ -8,7 +8,7 @@ public class Operations{
 	
 	
 	/**
-	* Calculate the total price of the work for each establishment<br>
+	* Calculate the total price of the work for each establishment and cost per address for north location<br>
 	* <b> pre: </b> Array totalPrice must be initialized <br>
 	* <b> post: </b> Calculation of the total price for each establishment <br>
 	* @ param productsQuantity product quantity. productsQuantity> 0
@@ -110,10 +110,10 @@ public class Operations{
 	}
 	
 	/**
-	* Retorna el total acumulado de los mejores precios y costo por domicilio<br>
-	* <b> pre: </b>Arreglo butterBuy debe tener almacenados los mejores precios<br>
-	* <b> post: </b> Calcula el total acumulado de los mejores precios y el domicilio<br>
-	* @ param betterBuy Almacena los mejores precios. betterBuy > 0
+	* Returns the accumulated total of the best prices and cost per address for north location <br>
+	* <b> pre: </b> butterBuy arrangement must have the best prices stored <br>
+	* <b> post: </b> Calculate the accumulated total of the best prices and the address <br>
+	* @ param betterBuy Stores the best prices. betterBuy> 0
 	*/
 	
 	public static float totalBetterBuy(float[] betterBuy){
