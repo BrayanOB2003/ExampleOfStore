@@ -2,12 +2,32 @@ package model;
 
 public class Operations{
 	
-	public static void totalPrice(String[] productsName,float[] productsQuantity,float[] homecenter, float[] district, float[] center, float[] totalPrice){
+	private final static int roughConstruction = 1300000;
+	private final static int finalConstruction = 2600000;
+	private final static int painting = 980000; 
+	
+	
+	/**
+	* Calculate the total price of the work for each establishment<br>
+	* <b> pre: </b> Array totalPrice must be initialized <br>
+	* <b> post: </b> Calculation of the total price for each establishment <br>
+	* @ param productsQuantity product quantity. productsQuantity> 0
+	* @ param homecenter price of products in homecenter. homecenter> 0
+	* @ param district price of the products in the neighborhood hardware store. district []> 0
+	* @ param center price of the products in the center hardware store. center []> 0
+	*/
+	
+	public static void totalPrice(float[] productsQuantity,float[] homecenter, float[] district, float[] center, float[] totalPrice){
+		
 		
 		for(int i = 0; i < homecenter.length; i++){
-			totalPrice[0] += productsQuantity[i]*homecenter[i];	
-			totalPrice[1] += productsQuantity[i]*district[i];
-			totalPrice[2] += productsQuantity[i]*center[i];
+			totalPrice[0] += (productsQuantity[i]*homecenter[i]);
+			totalPrice[1] += (productsQuantity[i]*district[i]);
+			totalPrice[2] += (productsQuantity[i]*center[i]);
+		}
+		
+		for(int i = 0; i < totalPrice.length; i++){
+			totalPrice[i] += roughConstruction + finalConstruction + painting;
 		}
 		
 		for(int i = 0; i < totalPrice.length; i++){
@@ -21,6 +41,16 @@ public class Operations{
 		}
 		
 	}
+	
+	/**
+	* Calculate the best price to buy according to the establishments<br>
+	* <b> pre: </b> betterBuy array and place array must be initialized <br>
+	* <b> post: </b> Calculation of the best prices and their respective establishments <br>
+	* @ param homecenter price of products in homecenter. homecenter> 0
+	* @ param district price of the products in the neighborhood hardware store. district []> 0
+	* @ param center price of the products in the center hardware store. center []> 0
+	* @ param productsQuantity product quantity. productsQuantity> 0
+	*/
 	
 	public static void betterBuy(float[] homecenter, float[] district, float[] center, float[] productsQuantity, float[] betterBuy, String[] place){
 		
@@ -77,6 +107,29 @@ public class Operations{
 				betterBuy[i] = totalDistrict[i];
 			}
 		}
+	}
+	
+	/**
+	* Retorna el total acumulado de los mejores precios y costo por domicilio<br>
+	* <b> pre: </b>Arreglo butterBuy debe tener almacenados los mejores precios<br>
+	* <b> post: </b> Calcula el total acumulado de los mejores precios y el domicilio<br>
+	* @ param betterBuy Almacena los mejores precios. betterBuy > 0
+	*/
+	
+	public static float totalBetterBuy(float[] betterBuy){
 		
+		float totalBetterBuy = 0;
+		
+		for(int i = 0; i < betterBuy.length; i++){
+			totalBetterBuy += betterBuy[i];
+		}
+		
+		if(totalBetterBuy < 80000){
+			totalBetterBuy += 120000;
+		} else if(totalBetterBuy < 300000){
+			totalBetterBuy += 28000;
+		}
+		
+		return totalBetterBuy;
 	}
 }

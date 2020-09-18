@@ -4,6 +4,13 @@ import model.*;
 
 public class Main{
 	
+	/**
+	* Ask for the quantity of products to define the size of the arrangements<br>
+	* <b> pre: </b> <br>
+	* <b> post: </b> Returns quantity of products / size of arrangements <br>
+	* @ param size Stores the requested value. size> 0
+	*/
+	
 	public static int size(){
 		Scanner in = new Scanner(System.in);
 		System.out.print("Numero de productos que quiere comprar: ");
@@ -12,6 +19,14 @@ public class Main{
 		
 		return size;
 	}
+	
+	/**
+	* Ask for the name, quantity and use of the product<br>
+	* <b> pre: </b> <br>
+	* <b> post: </b> Stores the typed product information in the arrangements <br>
+	* @ param productsQuantity product quantity. productsQuantity> 0
+	* @ param productsUse product usage. 0 <productsUse <= 3
+	*/
 	
 	public static void materialList(String[] productsName, float[] productsQuantity, int[] productsUse){		
 		Scanner in  = new Scanner(System.in);
@@ -28,6 +43,15 @@ public class Main{
 			System.out.println("");
 		}
 	}
+	
+	/**
+	* Ask for the price of each product in three establishments<br>
+	* <b> pre: </b> Homecenter, District and Center arrangements must be initialized <br>
+	* <b> post: </b> The value of the respective product is stored in each arrangement.
+	* @ param Homecenter price of products in homecenter. homecenter> 0
+	* @ param District price of the products in the neighborhood hardware store. district []> 0
+	* @ param Center price of the products in the hardware store of the center. center []> 0
+	*/
 	
 	public static void productsPrice(float[] Homecenter,float[] District ,float[] Center ,String[] productsName){
 		Scanner in= new Scanner(System.in);
@@ -67,6 +91,13 @@ public class Main{
 		}
 	}
 	
+	/**
+	* Print the total purchase price for each establishment<br>
+	* <b> pre: </b> <br>
+	* <b> post: </b> Displays the total prices in each establishment <br>
+	* @ param totalPrice Stores the calculated total price. totalPrice> 0
+	*/
+	
 	public static void printTotalPrice(float[] totalPrice){
 		
 		System.out.println("El total a pagar en Homecenter es : " + totalPrice[0]);
@@ -75,7 +106,16 @@ public class Main{
 		
 	}
 	
-	public static void printBetterBuy(float[] betterBuy, String[] place, String[] productsName){
+	/**
+	* Print product, best price, establishment and total payment to which it corresponds<br>
+	* <b> pre: </b> The arrangements must have the corresponding information <br>
+	* <b> post: </b> Shows on screen the name of the product, the lowest price, the establishment to which it belongs and the total payment <br>
+	* @ param betterBuy arrangement Stores the best prices. ! = null
+	* @ param Array place Stores the names of the places with the best price. ! = null
+	* @ param Array productsName Stores the names of the products. ! = null
+	*/
+	
+	public static void printBetterBuy(float[] betterBuy, String[] place, String[] productsName, float totalBetterBuy){
 		
 		float totalPrice = 0;
 		System.out.println("");
@@ -92,12 +132,17 @@ public class Main{
 			System.out.println("");
 		}
 		
-		for(int i = 0; i < betterBuy.length; i++){
-			totalPrice += betterBuy[i];
-		}
-		System.out.println("Pago total: " + totalPrice);
+		System.out.println("Pago total: " + totalBetterBuy);
 		
 	}
+	
+	/**
+	* Print the products for the use that they were given in the work<br>
+	* <b> pre: </b> <br>
+	* <b> post: </b> It shows on the screen a list of products by use, according to the user choose the type of work <br>
+	* @ param Array productsName Stores the names of the products. ! = null
+	* @ param productsUse product usage. 0 <productsUse <= 3
+	*/
 	
 	public static void printProducts(String[] productsName, int[] productsUse){
 		
@@ -156,13 +201,15 @@ public class Main{
 		float[] totalPrice = new float[3];
 		float[] betterBuy = new float[size];
 		String[] place = new String[size];
+		float totalBetterBuy = 0;
 		
 		materialList(productsName,productsQuantity,productsUse);
 		productsPrice(homecenter, district, center, productsName);
-		Operations.totalPrice(productsName, productsQuantity, homecenter, district, center, totalPrice);
+		Operations.totalPrice(productsQuantity, homecenter, district, center, totalPrice);
 		printTotalPrice(totalPrice);
 		Operations.betterBuy(homecenter, district, center, productsQuantity, betterBuy, place);
-		printBetterBuy(betterBuy, place, productsName);
+		totalBetterBuy = Operations.totalBetterBuy(betterBuy);
+		printBetterBuy(betterBuy, place, productsName, totalBetterBuy);
 		printProducts(productsName,productsUse);
 	}
 }
